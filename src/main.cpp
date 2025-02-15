@@ -63,7 +63,7 @@ void printHelp(const char *programName)
 // Print the version
 void printVersion(const char *programName)
 {
-  std::cout << "Calendar Version: v0.1 (2022.3.14 build)" << std::endl;
+  std::cout << programName << " Version: v0.1 (2022.3.14 build)" << std::endl;
 }
 
 int main(int argc, char *argv[])
@@ -71,13 +71,12 @@ int main(int argc, char *argv[])
   // 检查特定的参数
   for (int i = 1; i < argc; ++i)
   {
-    if (std::string(argv[i]) == "--help")
+    if (std::string(argv[i]) == "--help" || std::string(argv[i]) == "-h")
     {
       printHelp(argv[0]);
       return 0;
     }
-
-    if (std::string(argv[i]) == "--version" || std::string(argv[i]) == "-V")
+    else if (std::string(argv[i]) == "--version" || std::string(argv[i]) == "-V")
     {
       printVersion(argv[0]);
       return 0;

@@ -46,15 +46,39 @@ void generate_month_layout(int year, int month, char output[8][21])
   memset(output[2] + 3 * (head_length + month_length), ' ', tail_length);
 }
 
+void print_help(const char *program_name)
+{
+  printf("Usage: %s <year>\n", program_name);
+  printf("Help:\n");
+  printf("  - This program generates a calendar for the specified year.\n");
+  printf("  - The year should be an integer between 1970 and 65535.\n");
+  printf("Version: v0.1 (2022.3.14 build)\n");
+}
+
+void print_version(const char *program_name)
+{
+  printf("%s Version: v0.1 (2022.3.14 build)\n", program_name);
+}
+
 int main(int argc, char *argv[])
 {
+  for (int i = 0; i < argc; ++i)
+  {
+    if (strcmp(argv[i], "--help") == 0 || strcmp(argv[i], "-h") == 0)
+    {
+      print_help(argv[0]);
+      return 0;
+    }
+    else if (strcmp(argv[i], "--version") == 0 || strcmp(argv[i], "-V") == 0)
+    {
+      print_version(argv[0]);
+      return 0;
+    }
+  }
+
   if (argc != 2)
   {
-    printf("Usage: %s <year>\n", argv[0]);
-    printf("Help:\n");
-    printf("  - This program generates a calendar for the specified year.\n");
-    printf("  - The year should be an integer between 1970 and 65535.\n");
-    printf("Version: v0.1 (2022.3.14 build)\n");
+    print_help(argv[0]);
     return 0;
   }
 
