@@ -1,2 +1,2 @@
-bash ./test/test.sh
+bash ./test/c.sh
 

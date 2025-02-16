@@ -1,2 +1,5 @@
-src/out
-src/main
+src/*
+
+!src/*.c
+!src/*.h
+!src/*.cpp
