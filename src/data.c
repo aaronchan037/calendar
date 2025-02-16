@@ -18,6 +18,7 @@ void generate_month_layout(int year, int month, char output[8][21])
     assert(month >= 1 && month <= 12);
     assert(year >= 1970 && year <= 65535);
 
+    // 月份头部
     const char *head[] = {
         "       January        Su Mo Tu We Th Fr Sa",
         "      February        Su Mo Tu We Th Fr Sa",
@@ -31,6 +32,7 @@ void generate_month_layout(int year, int month, char output[8][21])
         "       October        Su Mo Tu We Th Fr Sa",
         "      November        Su Mo Tu We Th Fr Sa",
         "      December        Su Mo Tu We Th Fr Sa"};
+    // 日期主体
     const char *body =
         "  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31";
 
@@ -47,6 +49,7 @@ void generate_month_layout(int year, int month, char output[8][21])
     memset(output[2] + 3 * (head_length + month_length), ' ', tail_length);
 }
 
+// 打印欢迎信息
 void print_welcome(const char *program_name)
 {
     printf("Calendar Generator\n");
@@ -58,23 +61,29 @@ void print_welcome(const char *program_name)
     printf("Type '%s --help' for more information.\n", program_name);
 }
 
+// 打印帮助信息
 void print_help(const char *program_name, const char *version, const char *build_date)
 {
     printf("Calendar Generator %s (%s build)\n", version, build_date);
     printf("====================================\n");
     printf("Usage:\n");
     printf("  %s [OPTIONS] <COMMAND>\n", program_name);
+    printf("Options:\n");
+    printf("  --output, -o   \t\t Output a calendar for the specified\n");
+    printf("      <default>  \t\t default output a calendar for this year\n");
+    printf("        year     \t\t for a year\n");
+    printf("        month    \t\t for a month\n");
+    printf("  --help, -h     \t\t Print this help documentation\n");
+    printf("  --version, -V  \t\t Print the version\n");
     printf("Commands:\n");
     printf("  <year>         \t\t Generate a calendar for the specified year\n");
     printf("  <year>-<month> \t\t Generate a calendar for the specified month\n");
     printf("Example: %s 2022\n", program_name);
-    printf("Options:\n");
-    printf("  --help, -h     \t\t Print this help documentation\n");
-    printf("  --version, -V  \t\t Print the version\n");
     printf("Help:\n");
     printf("  - The year should be an integer between 1970 and 65535.\n");
 }
 
+// 打印版本信息
 void print_version(const char *program_name, const char *version, const char *build_date)
 {
     printf("%s version: %s (%s build)\n", program_name, version, build_date);

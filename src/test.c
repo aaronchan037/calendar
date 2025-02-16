@@ -10,7 +10,7 @@ int isLeapYear(int year)
 int getStartDayOfYear(int year)
 {
     int totalDays = 0;
-    for (int i = 1900; i < year; i++)
+    for (int i = 2000; i < year; i++)
     {
         if (isLeapYear(i))
         {
@@ -28,6 +28,7 @@ int getStartDayOfYear(int year)
 int getDaysInMonth(int year, int month)
 {
     int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    // 闰年2月份有29天
     if (isLeapYear(year) && month == 2)
     {
         return 29;
@@ -45,8 +46,8 @@ void displayCalendar(int year, int month)
     }
     startDay %= 7;
 
-    printf("     %d年%d月\n", year, month);
-    printf(" 日 一 二 三 四 五 六\n");
+    printf("\t%d-%d\n", year, month);
+    printf(" Su Mo Tu We Th Fr Sa\n");
 
     for (int i = 0; i < startDay; i++)
     {
@@ -68,14 +69,14 @@ void displayCalendar(int year, int month)
 int main()
 {
     int year, month;
-    printf("请输入年份: ");
+    printf("Please type the year: ");
     scanf("%d", &year);
-    printf("请输入月份: ");
+    printf("Please type the month: ");
     scanf("%d", &month);
 
-    if (year < 1900 || month < 1 || month > 12)
+    if (year < 2000 || month < 1 || month > 12)
     {
-        printf("输入的年份或月份不合法。\n");
+        printf("Don't found the year and month.\n");
     }
     else
     {
