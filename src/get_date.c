@@ -23,6 +23,8 @@ int get_now_date(const char *format)
         return 1;
     }
 
+    // 判断格式
+    // 输出年份
     if (format == "year")
     {
         // 提取年份信息（struct tm 中的年份是从 1900 开始计数的，所以要加 1900）
@@ -30,6 +32,7 @@ int get_now_date(const char *format)
         // 输出当前年份
         printf("%d\n", year);
     }
+    // 输出月份
     else if (format == "month")
     {
         // 提取月份信息（struct tm 中的月份是从 0 开始计数的，所以要加 1）
@@ -37,6 +40,7 @@ int get_now_date(const char *format)
         // 输出当前月份
         printf("%d\n", month);
     }
+    // 格式错误
     else
     {
         printf("Invalid format.\n");
