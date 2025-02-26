@@ -1,0 +1,34 @@
+name: Build project
+
+on:
+  workflow_dispatch:
+    task:
+      description: "Choose an workflow"
+      required: true
+      default: "build"
+      type: choice
+      options:
+        - build
+        - test
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    if: github.event.inputs.task == 'build' || github.event.push
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build project
+        run: |
+          make test
+
+  test:
+    if: github.event.inputs.task == 'test'
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4

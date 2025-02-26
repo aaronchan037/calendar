@@ -1,5 +1,5 @@
 cd src
-gcc main.c data.c -o calendar
+gcc main.c data.c info.c -o calendar
 
 
 # 将可执行文件移动到 /usr/local/bin 目录下
