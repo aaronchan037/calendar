@@ -15,7 +15,7 @@ on:
 
 jobs:
   build:
-    if: github.event.inputs.task == 'build' || github.event.push
+    if: github.event.inputs.task == 'build' || github.event.push == true
     name: Build
     runs-on: ubuntu-latest
     steps:
