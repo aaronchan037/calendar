@@ -10,12 +10,12 @@ on:
       options:
         - build
         - test
-  push:
-    branches: [main]
+  # push:
+  #   branches: [main]
 
 jobs:
   build:
-    if: github.event.inputs.task == 'build' || github.event.push == true
+    if: github.event.inputs.task == 'build'
     name: Build
     runs-on: ubuntu-latest
     steps:
