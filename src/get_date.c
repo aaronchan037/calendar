@@ -52,9 +52,9 @@ int get_now_date(const char *format)
 
 int main()
 {
-    const char *format = "month";
+    const char *format = "year";
     int now_date = get_now_date(format);
-    if (now_date != 0)
+    if (now_date == 0)
     {
         return 1;
     }

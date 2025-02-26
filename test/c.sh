@@ -1,12 +1,15 @@
 cd ././src
 echo "##### C programming #####"
-gcc main.c data.c -o main
+gcc main.c data.c info.c -o calendar
 
 
 set -x
 # Run the program
-./main
-./main --help
+./calendar
+
+./calendar --help
+
+
 # ./main -h
 # ./main --version
 # ./main -V

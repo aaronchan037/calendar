@@ -4,6 +4,7 @@
 
 // 自定义库文件
 #include "data.h"
+#include "info.h"
 
 int main(int argc, char *argv[])
 {
