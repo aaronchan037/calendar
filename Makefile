@@ -6,7 +6,7 @@ build:
 	mkdir -p bin build
 	cmake -S . -B ./build
 	cmake --build ./build
-	./bin/calendar
+	./bin/Calendar
 
 clean:
 	rm -rf bin build
