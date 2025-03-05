@@ -4,6 +4,10 @@
 
 一个基于 C 语言开发的日历生成器，未来还会拓展到 C++, Rust。
 
+### Build
+
+Use `make` or `make build` to build all project.
+
 ### Test
 
 `make test`

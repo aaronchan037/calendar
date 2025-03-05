@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build project
         run: |
-          make test
+          make build
 
   test:
     if: github.event.inputs.task == 'test'
