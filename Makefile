@@ -1,12 +1,17 @@
 # 设置make默认目标。如果不设置，就是第一个目标
-.DEFAULT_GOAL := build
-.PHONY: build test install uninstall
+.DEFAULT_GOAL := all
+.PHONY: all c cpp install uninstall
 
-build:
-	echo "Hello world"
 
-test:
-	bash test.sh
+all: c cpp
+
+c:
+	cd c && make all
+
+cpp:
+	cd cpp && make all
+
+
 
 install:
 	bash ./scripts/install.sh
