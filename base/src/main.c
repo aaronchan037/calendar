@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "date.h"
+
 // 判断是否为闰年
 int isLeapYear(int year)
 {
@@ -34,22 +36,6 @@ void gen_month_layout()
         "      November      ",
         "      December      "};
     const char *week[] = {"Su Mo Tu We Th Fr Sa"};
-}
-
-// 一天为一个1×2的二维数组
-void a_day_layout(int day, int output[1][2])
-{
-    int arr[1][2];
-    if (day <= 9)
-    {
-        arr[1][2] = (" %d", day);
-    }
-    else
-    // day > 10
-    {
-        arr[1][2] = ("%d", day);
-    }
-    printf("%s", arr[1][2]);
 }
 
 void a_day(int day_number, char output[1][2])
@@ -90,17 +76,9 @@ void day_layout(char output[6][20])
     }
 }
 
-int main(int argc, char *argv[])
+int other(int argc, char *argv[])
 {
-    // bool istrue = true;
-    // printf("%d\n", istrue);
-    // bool isfalse = false;
-    // printf("%d\n", isfalse);
-
     int year = atoi(argv[1]);
-    // printf("%s\n", argv[1]);
-    // printf("%d\n", year);
-    // printf("%d\n", isLeapYear(year));
     if (isLeapYear(year))
     {
         printf("Leap Year\n");
@@ -109,10 +87,30 @@ int main(int argc, char *argv[])
     {
         printf("Not leap year\n");
     }
+}
+
+int main()
+{
+    // bool istrue = true;
+    // printf("%d\n", istrue);
+    // bool isfalse = false;
+    // printf("%d\n", isfalse);
+
+    // printf("%s\n", argv[1]);
+    // printf("%d\n", year);
+    // printf("%d\n", isLeapYear(year));
 
     // char a[6][20];
     // day_layout(a);
-    int a[1][2], b[1][2];
-    a_day_layout(28, a[1][2]);
-    a_day_layout(4, b[1][2]);
+
+    // a_day_layout(28);
+    // a_day_layout(4);
+
+    for (int i = 1; i <= 31; i++)
+    {
+        a_day_layout(i);
+        printf(" ");
+    }
+
+    return 0;
 }

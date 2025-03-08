@@ -1,7 +1,7 @@
 # CMake 支持的最低版本
 cmake_minimum_required(VERSION 3.31)
 # 项目名称及其其他信息
-project(Calendar VERSION 0.1.0)
+project(calendar VERSION 0.1.0)
 # 设置可执行文件的存放目录
 set (EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 # 源文件目录
