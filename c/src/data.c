@@ -34,8 +34,8 @@ void generate_month_layout(int year, int month, char output[8][21])
         "       August         Su Mo Tu We Th Fr Sa",
         "      September       Su Mo Tu We Th Fr Sa",
         "       October        Su Mo Tu We Th Fr Sa",
-        "      November        Su Mo Tu We Th Fr Sa",
-        "      December        Su Mo Tu We Th Fr Sa"};
+        "       November       Su Mo Tu We Th Fr Sa",
+        "       December       Su Mo Tu We Th Fr Sa"};
     // 日期主体
     const char *body =
         "  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31";
