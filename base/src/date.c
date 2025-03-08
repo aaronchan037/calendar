@@ -1,15 +1,16 @@
-#include <stdio.h>
+#include <stdbool.h>
 
-// 一天的布局
-void a_day_layout(int day)
+// 判断是否为闰年
+int isLeapYear(int year)
 {
-    if (day <= 9)
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
     {
-        printf(" %d", day);
+        return true;
+        // true -> 1
     }
     else
-    // day > 10
     {
-        printf("%d", day);
+        return false;
+        // false -> 0
     }
 }

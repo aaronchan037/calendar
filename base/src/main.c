@@ -1,79 +1,12 @@
 #include <stdio.h>
-#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 
+#include "month.h"
 #include "date.h"
-
-// 判断是否为闰年
-int isLeapYear(int year)
-{
-    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
-    {
-        return true;
-        // true -> 1
-    }
-    else
-    {
-        return false;
-        // false -> 0
-    }
-}
 
 void gen_month_layout()
 {
-    const char *month_name[] = {
-        "      January       ",
-        "      February      ",
-        "       March        ",
-        "       April        ",
-        "        May         ",
-        "       June         ",
-        "       July         ",
-        "      August        ",
-        "     September      ",
-        "      October       ",
-        "      November      ",
-        "      December      "};
-    const char *week[] = {"Su Mo Tu We Th Fr Sa"};
-}
-
-void a_day(int day_number, char output[1][2])
-{
-    int arr[1][2];
-    for (int i = 0; i < 2; i++)
-    {
-        for (int day = 1; day <= day_number; i++)
-        {
-        }
-    }
-}
-
-// 天数布局
-void day_layout(char output[6][20])
-{
-    int arr[6][20];
-    int value = 0;
-    for (int i = 0; i < 6; i++)
-    {
-        for (int j = 0; j < 20; j++)
-        {
-            arr[i][j] = (" %d", value);
-            value++;
-        }
-    }
-
-    for (int i = 1; i <= 9; i++)
-    {
-        printf(" ");
-        printf("%d", i);
-        printf(" ");
-    }
-    for (int i = 10; i <= 31; i++)
-    {
-        printf("%d", i);
-        printf(" ");
-    }
 }
 
 int other(int argc, char *argv[])
@@ -89,13 +22,42 @@ int other(int argc, char *argv[])
     }
 }
 
+// 一年的布局
+void year_layout(int year, int year_moved_day)
+{
+    int arr[4][3];
+    int month_day[12] = {31, Fe_day(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int moved_day = year_moved_day;
+    int month = 1;
+    // 输出
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (month == 2)
+            {
+                second_month(moved_day, Fe_day(year));
+            }
+            else
+            {
+                month_layout(month, moved_day, month_day[month - 1]);
+            }
+            moved_day = ((moved_day + month_day[month - 1]) % 7);
+
+            if (month <= 12)
+            {
+                month++;
+            }
+            printf(" ");
+        }
+        printf("\n");
+    }
+
+    // printf("%d\n", year);
+}
+
 int main()
 {
-    // bool istrue = true;
-    // printf("%d\n", istrue);
-    // bool isfalse = false;
-    // printf("%d\n", isfalse);
-
     // printf("%s\n", argv[1]);
     // printf("%d\n", year);
     // printf("%d\n", isLeapYear(year));
@@ -103,14 +65,8 @@ int main()
     // char a[6][20];
     // day_layout(a);
 
-    // a_day_layout(28);
-    // a_day_layout(4);
-
-    for (int i = 1; i <= 31; i++)
-    {
-        a_day_layout(i);
-        printf(" ");
-    }
+    // month_layout(2, 6, 28);
+    year_layout(2025, 3);
 
     return 0;
 }

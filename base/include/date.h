@@ -1,1 +1,1 @@
-void a_day_layout(int day);
+int isLeapYear(int year);
