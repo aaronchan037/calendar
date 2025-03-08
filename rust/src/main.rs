@@ -11,6 +11,7 @@ fn main() {
 
     // 获取命令行参数
     let args: Vec<String> = env::args().collect();
+    // 获取 calendar 的值
     let prog_name = &args[0];
 
     // 特定参数处理
@@ -31,6 +32,7 @@ fn main() {
     }
 
     // 生成日历
+    // 获取第一个参数值
     let year_str = &args[1];
     let year: i32 = match year_str.parse() {
         Ok(num) => num,
@@ -46,7 +48,7 @@ fn main() {
         process::exit(1);
     }
 
-    for i in 0..4 {
+    for i in 0..=3 {
         let mut a = [[' '; 21]; 8];
         let mut b = [[' '; 21]; 8];
         let mut c = [[' '; 21]; 8];
@@ -55,7 +57,7 @@ fn main() {
         date::generate_month_layout(year, 3 * i + 2, &mut b);
         date::generate_month_layout(year, 3 * i + 3, &mut c);
 
-        for j in 0..8 {
+        for j in 0..=7 {
             let row_a: String = a[j].iter().collect();
             println!("{}", row_a);
             let row_b: String = b[j].iter().collect();
