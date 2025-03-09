@@ -52,21 +52,63 @@ void year_layout(int year, int year_moved_day)
         }
         printf("\n");
     }
+}
 
-    // printf("%d\n", year);
+// 函数用于处理天数
+char *processDays(int days)
+{
+    static char result[2];
+    if (days > 0 && days <= 9)
+    {
+        // 如果是一位数，在前面添加空格
+        sprintf(result, " %d", days);
+    }
+    else
+    {
+        // 如果是两位数，直接转换为字符串
+        sprintf(result, "%d", days);
+    }
+    return result;
+}
+
+char *processMonths(int moved_day, int month_day)
+{
+    static char result[6][7];
+    int day = 1;
+    for (int i = 0; i < 6; i++)
+    {
+        for (int j = 0; j < 7; j++)
+        {
+            if (moved_day != 0)
+            {
+                sprintf(result[i][j], "  ");
+                moved_day--;
+            }
+            else
+            {
+                if (day <= month_day)
+                {
+                    a_day_layout(day);
+                    day++;
+                }
+            }
+            printf(" ");
+        }
+        if (day <= month_day)
+        {
+            printf("\n");
+        }
+    }
 }
 
 int main()
 {
-    // printf("%s\n", argv[1]);
-    // printf("%d\n", year);
-    // printf("%d\n", isLeapYear(year));
+    int testDays = 4;
+    char *processed = processDays(testDays);
+    printf("%s", processed);
+    printf("\n");
 
-    // char a[6][20];
-    // day_layout(a);
-
+    all_day_layout(4, 28);
     // month_layout(2, 6, 28);
-    year_layout(2025, 3);
-
-    return 0;
+    // year_layout(2025, 3);
 }

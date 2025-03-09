@@ -23,10 +23,8 @@ void all_day_layout(int moved_day, int month_day)
     assert(moved_day >= 0 && moved_day <= 6);
     int arr[6][7];
     int day = 1;
-    int moved_value = moved_day;
     for (int i = 0; i < 6; i++)
     {
-
         for (int j = 0; j < 7; j++)
         {
             if (moved_day != 0)
