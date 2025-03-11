@@ -1,0 +1,41 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "Choose an workflow"
+        required: true
+        default: "build"
+        type: choice
+        options:
+          - build
+          - test
+  schedule:
+    # 每周一的0:37分执行（北京时间+8）
+    - cron: "37 0 * * 1"
+  # push:
+  #   branches: [main]
+
+jobs:
+  build:
+    if: >-
+      github.event.inputs.task == 'build' ||
+      github.event.schedule == '37 0 * * 1'
+    # github.event_name == 'push'
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build project
+        run: |
+          make all
+
+  test:
+    if: github.event.inputs.task == 'test'
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
