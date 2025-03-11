@@ -28,9 +28,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Build project
+      # - name: Build all project
+      #   run: |
+      #     make all
+      - name: c
         run: |
-          make all
+          make c
+      - name: cpp
+        run: |
+          make cpp
+      - name: Rust
+        run: |
+          cd rust
+          cargo run
 
   test:
     if: github.event.inputs.task == 'test'
