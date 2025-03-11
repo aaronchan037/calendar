@@ -1,8 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <assert.h>
 #include <string.h>
-#include <time.h>
 
 // 获取月份的起始日期偏移
 long get_month_beginning(unsigned short year, unsigned short month)
